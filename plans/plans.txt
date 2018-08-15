@@ -1,0 +1,35 @@
+Ice Mazes plans.
+
+Interface:
+
+a) board, rows, tiles - data for these needs to come from a file giving level details.
+b) view area - a 15 x 15 section of the board around the player
+c) keys area - which keys are currently held, shown as icons
+d) directions area - how to play, controls, instructions
+e) navigation buttons - restart level, previous level, save progress (using cookies or localStorage), on-screen controls ...later, hints, replace on-screen controls with gestures, mini-map
+
+Architecture:
+
+Shouldn't need much of a back-end, apart from a simple server. Everything else can be stored in public - no passwords or anything. Level data can be in files in /public.
+SPA.
+
+
+Stack:
+
+Webpack.js to bundle
+
+React.js - main functionality ... I'm going to look up React Native, first. This would be a great time to learn that.
+HTML file
+
+SASS for styling
+
+Node, Express for server
+
+
+notes:
+"use strict" on every file
+Is there a linter that runs only on command? Or can I learn to ignore it? I'll use ESLint.
+Can I make webpack run faster? Maybe, but I won't worry about that now.
+
+K.
+
