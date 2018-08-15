@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "start-watch": "nodemon server/server.js"
+    "watch": "nodemon server/server.js",
+    "build": "webpack"
   },
   "keywords": [
     "ice",
@@ -15,13 +16,21 @@
   "author": "Doug Sauve",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.16.5"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "webpack-cli": "^3.1.0"
   }
 }
