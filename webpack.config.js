@@ -1,8 +1,10 @@
+"use strict"
+
 const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, '/src/router.js'),
+  entry: path.join(__dirname, '/src/App.js'),
   output: {
     filename: 'bundle.js'
   },
@@ -17,10 +19,15 @@ module.exports = {
             presets: [
               'babel-preset-env',
               'babel-preset-react'
+            ],
+            plugins: [
+              ['transform-class-properties', { 'spec': true}],
+              ['transform-object-rest-spread']
             ]
           }
         }
       }
     ]
-  }
+  },
+  
 };
