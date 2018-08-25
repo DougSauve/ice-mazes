@@ -12,6 +12,14 @@ Friday Aug 17 (2:30)
 1. Set up switch statement for routing in App.js
 2. Learned how to use PropTypes and integrated it.
 
-Saturday Aug 18 1:30
+Saturday Aug 18 (1:30)
 1. Set up an argTypes util method
 2. Got MainMenu and GameContainer functional and navigable
+
+Monday Aug 20 (1:30)
+1. Began setting up <Board /> component and sub-components
+2. Began integrating an API and Axios
+
+Tuesday Aug 21 2:15
+1. Created first level file
+2. Created level file reader

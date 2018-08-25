@@ -1,0 +1,28 @@
+Things that can show up on the board:
+
+I white block - ice
+W black block - wall
+G textured block - gravel
+
+H spiral - hole
+X x - landing spot
+
+B squared circle - boulder
+P mist - pit
+
+L ladder
+
+(S) stalagmites - colored **
+* blasting spell - colored (removes stalagmite)
+R rising spell - colored (grows stalagmite)
+T time spell - colored, shaped time shown (number of moves before lock closes)
+
+<^>v double arrow - jump
+ arrow with number - jump that far (numbers are below in a second table)
+
+{ - entry (after tile id)
+} - exit
+- outer wall
+
+
+** between two tiles - (another layer, absolute positioned?)

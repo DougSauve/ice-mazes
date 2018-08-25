@@ -14,7 +14,7 @@ const setCurrentLevel = (currentLevel) => ({
 
 //default state
 const defaultState = {
-  currentLevel: 0,
+  currentLevel: 1,
   currentInventory: [],
 };
 
