@@ -1,5 +1,8 @@
 "use strict"
 
+// styles
+import './Hub.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -7,6 +10,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import storeCreator from './Redux/store';
 const store = storeCreator();
+
 
 import chooseMainView from './Functions/chooseMainView';
 

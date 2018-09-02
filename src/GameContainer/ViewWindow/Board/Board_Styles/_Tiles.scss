@@ -1,0 +1,23 @@
+$ice_color: #eeeeff;
+$wall_color: #202020;
+
+%tile {
+  height: 2rem;
+  width: 2rem;
+};
+
+div[class $= 'ice'] {
+  @extend %tile;
+
+  background: $ice_color;
+};
+
+div[class $= 'entry'], div[class $= 'exit'] {
+  @extend %tile;
+}
+
+div[class *= 'outer'] {
+  @extend %tile;
+
+  background: black;
+}

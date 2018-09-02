@@ -1,0 +1,68 @@
+div[class $= 'wall'] {
+  @extend %tile;
+
+  background: $ice_color;
+
+  border: 2px $ice_color solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+};
+
+%core {
+  height: 100%;
+  width: 100%;
+  background: $wall_color;
+};
+
+.wall_ {
+  @extend %core;
+}
+.wall_l {
+  @extend %core;
+}
+.wall_r {
+  @extend %core;
+}
+.wall_u {
+  @extend %core;
+}
+.wall_d {
+@extend %core;
+}
+
+.wall_lr {
+  @extend %core;
+}
+.wall_lu {
+  @extend %core;
+}
+.wall_ld {
+  @extend %core;
+}
+.wall_ru {
+  @extend %core;
+}
+.wall_rd {
+  @extend %core;
+}
+.wall_ud {
+  @extend %core;
+}
+
+.wall_lru {
+  @extend %core;
+}
+.wall_lrd {
+  @extend %core;
+}
+.wall_lud {
+  @extend %core;
+}
+.wall_rud {
+  @extend %core;
+}
+
+.wall_lrud {
+  @extend %core;
+}

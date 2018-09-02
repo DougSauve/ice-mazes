@@ -9,7 +9,7 @@ const loadBoardData = async () => {
   //if there is data in localStorage, return it
   if (boardData !== null) return createBoardObjectFromLevelData(boardData);
   //if not, send an API call for level 1
-  return createBoardObjectFromLevelData(await getBoardDataFromFile({ level: 1 }));
+  return await createBoardObjectFromLevelData(await getBoardDataFromFile({ level: 1 }));
 };
 
 export default loadBoardData;

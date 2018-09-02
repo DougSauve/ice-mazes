@@ -9,7 +9,7 @@ import Board from './Board/Board';
 import {connect} from 'react-redux';
 
 const ViewWindow = (props) => (
-  <div>
+  <div className = "ViewWindow">
     ViewWindow
     {
       props.gameView === "LevelsMap" ?

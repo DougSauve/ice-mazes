@@ -1,15 +1,5 @@
 "use strict"
 
-/*needs to return an object that has this structure: board > row > tile > class
-* ex: { //board
-*   { //row
-*     {//tile
-*       class: 'ice'
-*     }
-*   }
-* }
-*/
-
 const createBoardObjectFromLevelData = (boardData) => {
 
   const {levelStatsArray, boardDataArray} = turnRawDataIntoArrays(boardData);
@@ -25,8 +15,6 @@ const createBoardObjectFromLevelData = (boardData) => {
   
   const boardDataObject = createBoardDataArray(boardDataArray);
 
-  console.log('statsObject', levelStatsObject);
-  console.log('boardDataObject', boardDataObject);
   return {levelStatsObject, boardDataObject};
 };
 
