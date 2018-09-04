@@ -1,0 +1,31 @@
+.CenterArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 35rem;
+  height: 100vh;
+
+  background: black;
+
+  z-index: 0;
+
+  .TopPanel {
+    @extend %panel;
+
+    box-shadow: 0 2px 2px #CCAAAA;
+  }
+  .BottomPanel {
+    @extend %panel; 
+
+    box-shadow: 0 -2px 2px #CCAAAA;
+  }
+}
+
+%panel {
+  background: $background2;
+  width: 100%;
+  flex-grow: 1;
+  z-index: 2;
+}

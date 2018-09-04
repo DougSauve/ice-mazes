@@ -1,7 +1,7 @@
 "use strict"
 
 // styles
-import './Hub.scss';
+import './Styles/Hub.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

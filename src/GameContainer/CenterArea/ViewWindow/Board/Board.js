@@ -2,19 +2,30 @@
 
 import React from 'react';
 
-import loadBoardData from './Board_Functions/loadBoardData';
+import loadBoardData from './Board_Rendering_Functions/loadBoardData';
 import getWallClassNameBasedOnSurroundings
-  from './Board_Functions/getWallClassNameBasedOnSurroundings';
+  from './Board_Rendering_Functions/getWallClassNameBasedOnSurroundings';
+
+import findEntryCoordinates from "./Board_Movement_Functions/findEntryCoordinates";
+import setCurrentPosition from "./Board_Movement_Functions/setCurrentPosition";
+
+import MovementController from './Board_Movement_Functions/MovementController';
 
 class Board extends React.Component {
   state = {
     levelLoaded: false,
     levelStats: null,
     boardData: null,
+    currentPosition: null
   };
 
   componentDidMount() {
-    this.populateState();
+    this.populateState()
+    .then(() => {
+      const {x, y} = findEntryCoordinates(this.state.boardData);
+      setCurrentPosition(x, y);
+      new MovementController(this.state.boardData, x, y);
+    });
   };
   
   populateState = async() => {
@@ -24,7 +35,10 @@ class Board extends React.Component {
       levelStats: levelStatsObject, 
       boardData: boardDataObject,
       levelLoaded: true,
+      
     }));
+
+    return Promise.resolve();
   };
 
   render() {
@@ -41,11 +55,11 @@ class Board extends React.Component {
                 key = {rowIndex}
               >
                 {
-                  row.map((tile, index) => {
+                  row.map((tile, tileIndex) => {
                     return (
                       <div 
                         className = {`Board__tile--${tile}`}
-                        key = {index}  
+                        key = {tileIndex}  
                       >
                       
                         {/* add styling to walls - break this out */}
@@ -53,10 +67,10 @@ class Board extends React.Component {
                           <div
                             className = {
                               getWallClassNameBasedOnSurroundings(
-                                row[index - 1], //left
-                                row[index + 1], //right
-                                this.state.boardData[rowIndex - 1][index], //up
-                                this.state.boardData[rowIndex + 1][index] //down
+                                row[tileIndex - 1], //left
+                                row[tileIndex + 1], //right
+                                this.state.boardData[rowIndex - 1][tileIndex], //up
+                                this.state.boardData[rowIndex + 1][tileIndex] //down
                               )
                             }
                           >

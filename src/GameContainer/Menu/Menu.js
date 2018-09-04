@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-import Button from '../Components/Button';
+import Button from '../../Components/Button';
 
-import store from '../App';
-import {setMainView} from '../Redux/view';
+import store from '../../App';
+import {setMainView} from '../../Redux/view';
 
 const Menu = () => (
-  <div>
+  <div className = "Menu">
     Menu
     <Button 
       className = "GameContainer__button--LinkToMainMenu"

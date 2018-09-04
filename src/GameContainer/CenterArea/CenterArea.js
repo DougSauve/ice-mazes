@@ -4,25 +4,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import LevelsMap from './LevelsMap';
-import Board from './Board/Board';
+import ViewWindow from './ViewWindow/ViewWindow';
 
 import {connect} from 'react-redux';
 
-const ViewWindow = (props) => (
-  <div className = "ViewWindow">
-    ViewWindow
+const CenterArea = (props) => (
+  <div className = "CenterArea">
+    <div className = "TopPanel" />
     {
       props.gameView === "LevelsMap" ?
       // Grid showing all available levels. Can click on one to play that level.
       //<LevelsMap /> :
-      <Board /> :
+      <ViewWindow /> :
       // Actual game. Whole level mounted, then it moves in the background as the player 'moves'. 
-      <Board />
+      <ViewWindow />
     }
+    <div className = "BottomPanel" />
   </div>
 );
 
-ViewWindow.propTypes = {
+CenterArea.propTypes = {
   gameView: PropTypes.string,
 };
 
@@ -30,4 +31,4 @@ const mapStateToProps = (store) => ({
   gameView: store.viewReducer.gameView,
 });
 
-export default connect(mapStateToProps)(ViewWindow);
+export default connect(mapStateToProps)(CenterArea);

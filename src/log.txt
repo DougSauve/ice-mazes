@@ -23,3 +23,16 @@ Monday Aug 20 (1:30)
 Tuesday Aug 21 2:15
 1. Created first level file
 2. Created level file reader
+
+~Very busy days with getting the house ready to sell and interviewing; very little time spent
+in here and I forgot to log it. Mainly got level file reader working, tried to get SASS implemented
+but ran into trouble with Webpack configuration and got stopped there. 
+
+Sunday Sep 2 (2:00)
+1. Got SASS styles being read and used
+2. Styled the game board, it is now coherent :)
+
+Monday Sep 3 (5:00)
+1. Got the game board centering on the entry point
+2. Styled the basic game 'dashboard'
+3. Began building a class to take care of movement
