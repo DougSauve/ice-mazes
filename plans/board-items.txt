@@ -17,8 +17,7 @@ L ladder
 R rising spell - colored (grows stalagmite)
 T time spell - colored, shaped time shown (number of moves before lock closes)
 
-<^>v double arrow - jump
- arrow with number - jump that far (numbers are below in a second table)
+<^>v arrow - redirect
 
 { - entry (after tile id)
 } - exit

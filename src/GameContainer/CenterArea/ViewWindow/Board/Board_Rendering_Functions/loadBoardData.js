@@ -3,13 +3,13 @@
 import getBoardDataFromFile from './getBoardDataFromFile';
 import createBoardObjectFromLevelData from './createBoardObjectFromLevelData';
 
-const loadBoardData = async () => {
+const loadBoardData = async (level) => {
   //access localStorage
   const boardData = localStorage.getItem('boardData');
   //if there is data in localStorage, return it
   if (boardData !== null) return createBoardObjectFromLevelData(boardData);
   //if not, send an API call for level 1
-  return await createBoardObjectFromLevelData(await getBoardDataFromFile({ level: 1 }));
+  return await createBoardObjectFromLevelData(await getBoardDataFromFile(level));
 };
 
 export default loadBoardData;

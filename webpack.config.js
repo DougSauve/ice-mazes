@@ -27,12 +27,24 @@ module.exports = {
           }
         }
       },
-       {
+      {
         test: /\.s?css$/,
         use: [
           {loader: 'style-loader'},
           {loader: 'css-loader'},
           {loader: 'sass-loader'},
+        ]
+      },
+      {
+        test: /\.png$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              // disable: true
+            }
+          }
         ]
       }
     ]

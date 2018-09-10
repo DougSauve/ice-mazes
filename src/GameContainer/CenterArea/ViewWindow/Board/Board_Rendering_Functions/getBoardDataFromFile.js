@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const getBoardDataFromFile = ({ level }) => {
+const getBoardDataFromFile = (level) => {
   
   //request file from server
   return new Promise((resolve, reject) => {

@@ -4,18 +4,52 @@ import React from 'react';
 
 import Button from '../../Components/Button';
 
-import store from '../../App';
+//Redux
+import {connect} from 'react-redux';
 import {setMainView} from '../../Redux/view';
+import {setLevelLoaded, setMovesTaken} from '../../Redux/gameData';
 
-const Menu = () => (
+import setCurrentPosition from '../CenterArea/ViewWindow/Board/Board_Movement_Functions/setCurrentPosition';
+
+const Menu = (props) => (
   <div className = "Menu">
-    Menu
+    Menu   
+    
+    <Button 
+      className = "GameContainer__button--ResetLevel"
+      onClick = {(this, () => {
+        setCurrentPosition(props.startingPositionX, props.startingPositionY);
+        props.setMovesTaken(0);
+        props.movementController.reset();
+
+      } )}
+      value = "Reset Level"
+    />
+    <p>moves: {props.movesTaken}</p>
+
+    <p>
+      level: {props.level}
+    </p>
     <Button 
       className = "GameContainer__button--LinkToMainMenu"
-      onClick = {(this, () => {store.dispatch(setMainView("MainMenu"))} )}
+      onClick = {(this, () => {props.setMainView("MainMenu")} )}
       value = "Exit to Menu"
     />
   </div>
 );
 
-export default Menu;
+const mapStateToProps = ((state) => ({
+  level: state.gameDataReducer.levelStats.level,
+  movesTaken: state.gameDataReducer.movesTaken,
+  startingPositionX: state.gameDataReducer.startingPosition.x,
+  startingPositionY: state.gameDataReducer.startingPosition.y,
+  movementController: state.gameDataReducer.movementController,
+}));
+
+const mapDispatchToProps = {
+  setMainView,
+  setLevelLoaded,
+  setMovesTaken
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

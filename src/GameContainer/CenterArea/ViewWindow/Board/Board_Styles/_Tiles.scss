@@ -1,20 +1,84 @@
 %tile {
   height: 2rem;
   width: 2rem;
+
+  border: 2px $ice_backdrop solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 };
 
-div[class $= 'ice'] {
-  @extend %tile;
+%tile-core {
+  height: 100%;
+  width: 100%;
 
-  background: $ice_color;
+  background: $ice-color;
 };
 
-div[class $= 'entry'], div[class $= 'exit'] {
+.Board__tile {
   @extend %tile;
-}
+};
 
+.ice_tile {
+  @extend %tile-core;
+};
+
+.wall_tile {
+  @extend %tile-core;
+
+  img {
+    width: 100%;
+    height: 100%;
+  };
+};
+
+.gravel_tile {
+  @extend %tile-core;
+
+  img {
+    width: 100%;
+    height: 50%;
+    margin-top: 50%;
+  };
+};
+
+.entry_tile {
+  @extend %tile-core;
+  
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,128,128,1) 0%, rgba(234,234,251,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0,128,128,1)), color-stop(100%, rgba(234,234,251,1))); /* safari4+,chrome */
+  background:-webkit-radial-gradient(center, ellipse cover, rgba(0,128,128,1) 0%, rgba(234,234,251,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(0,128,128,1) 0%, rgba(234,234,251,1) 100%); /* opera 11.10+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(0,128,128,1) 0%, rgba(234,234,251,1) 100%); /* ie10+ */
+  background:radial-gradient(ellipse at center, rgba(0,128,128,1) 0%, rgba(234,234,251,1) 100%); /* w3c */
+
+  img {
+    width: 100%;
+    height: 100%;
+  };
+};
+
+.exit_tile {
+  @extend %tile-core;
+
+  background: -moz-radial-gradient(center, ellipse cover, rgba(214,0,0,1) 0%, rgba(234,234,251,1) 100%); /* ff3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(214,0,0,1)), color-stop(100%, rgba(234,234,251,1))); /* safari4+,chrome */
+background:-webkit-radial-gradient(center, ellipse cover, rgba(214,0,0,1) 0%, rgba(234,234,251,1) 100%); /* safari5.1+,chrome10+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(214,0,0,1) 0%, rgba(234,234,251,1) 100%); /* opera 11.10+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(214,0,0,1) 0%, rgba(234,234,251,1) 100%); /* ie10+ */
+background:radial-gradient(ellipse at center, rgba(214,0,0,1) 0%, rgba(234,234,251,1) 100%); /* w3c */
+
+  img {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+  };
+};
+
+//outer walls
 div[class *= 'outer'] {
-  @extend %tile;
-
+  height: 2rem;
+  width: 2rem;
+  
   background: black;
-}
+};

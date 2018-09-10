@@ -77,8 +77,10 @@ const createBoardDataArrayWithClassNames = (boardArray) => {
     createBoardDataArrayWithClassNames[indexOfRow] = row.map((tile, indexOfTile) => {
       //returns class name based on symbol
       switch (tile) {
-        case 'I':
+        case ' ':
           return 'ice';
+        case 'G':
+          return 'gravel';
         case 'W':
           return 'wall';
         case '-':

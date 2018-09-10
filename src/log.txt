@@ -20,7 +20,7 @@ Monday Aug 20 (1:30)
 1. Began setting up <Board /> component and sub-components
 2. Began integrating an API and Axios
 
-Tuesday Aug 21 2:15
+Tuesday Aug 21 (2:15)
 1. Created first level file
 2. Created level file reader
 
@@ -36,3 +36,40 @@ Monday Sep 3 (5:00)
 1. Got the game board centering on the entry point
 2. Styled the basic game 'dashboard'
 3. Began building a class to take care of movement
+
+Tuesday Sep 4 (2:00)
+1. Got movement working, using intervals. The game is so insecure it's almost impossible to not hack, but the basic functionality is there. :)
+
+Wednesday Sep 5 (2:30)
+1. Got the end level working and showing an alert
+2. Got MovementController to shut out extra calls until the firest is finished
+3. Make going through walls not an option. Gameplay is now secure. :)
+
+Thursday Sep 6 (2:00)
+1. Got move tracker and level displaying from state and working
+2. Got reset working
+3. Moved MovementController and a few other things into Redux state
+4. Fixed going out the entry issue
+
+*need to fix wrong directions from start - currently throwing an error.
+
+Saturday Sep 7 (2:00)
+
+1. Can now progress to next level
+2. Begin refactoring MovementController
+
+Sunday Sep 8
+1. Finish refactoring MovementController (2:00)
+2. Add Gravel tile functionality and styling
+
+Monday Sep 9 1:15 @ 11:50
+1. Implement tiny images for tiles
+2. Make loading new level truly asynchronous
+3. Refactor Board
+
+*Style the game pages with Material.ui
+
+further:
+
+Add locks and keys and inventory functionality... switches to raise/lower blocks?
+Add multi-floor functionality, including ladders, spirals and landings

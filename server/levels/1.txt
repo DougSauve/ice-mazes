@@ -1,22 +1,21 @@
 1 //level
-20 //top time
+12 //top time
 1-15-15 //floor-height-width
-2-15-15
 ::
 1----------------
--WWIIIIWIIIWIWWW-
--WIIIIIIWIIIWIII-
--IIIIIIIWIIIWIII-
--IIIIIIIWIIIIIII}
--WIIIWWIIIIIWIII-
--IIIWIIIIIIIIIII-
--IIIIIIIWIIIIIII-
--IIIIIIIIIIIWIII-
--IIIWWIIIIIIWIII-
--IIIIIIIIIIIWIII-
--IIIIIIIWIIIIIIW-
--WIIIIIIIIWIIIIW-
--WWIIIIIIIIIIIWW-
--WWIIIIIWIIIIIWW-
--WWWWIIWWIIIWWWW-
+-WW    W      WW-
+-           W   -
+- W   W W   W   -
+-               }
+-    WW     W   -
+-   W        W  -
+-W      W       -
+-           W   -
+- W  W      W   -
+-    W      W   -
+-       WW      -
+-               -
+-   W     G   WW-
+-W              -
+-      W        -
 ----------{------

@@ -20,6 +20,9 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    //disable scrolling on page
+    document.body.style.overflow = "hidden";
+
     store.subscribe(() => {
       if (this.state.mainView !== store.getState().viewReducer.mainView ) {
         this.setState(() => ({ mainView: store.getState().viewReducer.mainView }));
