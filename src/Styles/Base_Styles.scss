@@ -2,4 +2,10 @@ body, body * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  font-family: arial;
 }
+
+.flex-spacer {
+  flex-grow: 1;
+};

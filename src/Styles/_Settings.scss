@@ -6,3 +6,17 @@ $ice_color: #eeeeff;
 $ice-backdrop: #eaeafb;
 $wall_color: #202020;
 $gravel_color: #887700;
+
+$primary_color: #3f51b5;
+$secondary_color: #f50057;
+
+//sizes
+$menu-box-dimension: 70vh;
+
+//partials
+%flex-standard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+};

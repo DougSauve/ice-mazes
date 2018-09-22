@@ -11,8 +11,8 @@ import {Provider} from 'react-redux';
 import storeCreator from './Redux/store';
 const store = storeCreator();
 
-
-import chooseMainView from './Functions/chooseMainView';
+import MainMenu from './MainMenu/MainMenu';
+import GameContainer from './GameContainer/GameContainer';
 
 class App extends React.Component {
   state = {
@@ -34,7 +34,9 @@ class App extends React.Component {
     return (
       <div>
         {
-          chooseMainView(this.state.mainView, store)
+          (this.state.mainView === 'MainMenu') ?
+          <MainMenu /> : 
+          <GameContainer />
         }
       </div>
     );

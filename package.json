@@ -16,6 +16,7 @@
   "author": "Doug Sauve",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^3.0.3",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^0.28.11",

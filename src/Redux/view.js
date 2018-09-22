@@ -13,7 +13,7 @@ const setGameView = (gameView) => ({
 
 const defaultState = {
   mainView: 'MainMenu',
-  gameView: 'LevelsMap',
+  gameView: 'Board',
 };
 
 //reducer

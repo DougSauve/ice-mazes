@@ -1,8 +1,15 @@
-.Menu {
-  background: $background1;
+.menu {
   flex: 1 1 20rem;
-
-  z-index: 3;
-
+ 
+  @extend %flex-standard;
+  
+  z-index: 4;
+  
+  background: $background1;
   box-shadow: 2px 0 2px #AAAACC;
+
+  [class *= 'menu__button'] {
+    width: 75%;
+    margin: .5rem;
+  };
 };

@@ -1,0 +1,68 @@
+.main-menu {
+  @extend %flex-standard;
+
+  height: 100vh;
+  width: 100vw;
+};
+
+.main-menu__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-menu__title {
+  height: 20vh;
+  
+  padding-top: 1rem;
+
+  color: white;
+  font-size: 70px;
+
+  text-shadow: -2px -2px 6px #bb00aa, -2px 2px 4px #bb00aa, 2px -2px 7px #bb00aa, -2px -2px 5px #bb00aa,
+  -4px 0 6px #dd88cc, 0 -4px 4px #dd88cc, 4px 0 7px #dd88cc, 0 4px 5px #dd88cc
+};
+
+.main-menu__menu-options-box {
+  @extend %flex-standard;
+  
+  height: 100%;
+  width: 40vw;
+  
+  button {
+    width: 75%;
+    
+    margin: 1rem;
+  };
+};
+  
+.main-menu__photo-box {
+  @extend %flex-standard;
+
+  height: 100%;
+  width: 40vw;
+
+  .main-menu__photo-box__background {
+    position: absolute;
+    margin-left: -1.5vw;
+
+    height: 60vh;
+    width: 60vh;
+    z-index: 5;
+    
+    background: -moz-radial-gradient(center, ellipse cover, rgba(71,130,214,1) 0%, rgba(34,34,34,1) 61%, rgba(34,34,34,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(71,130,214,1)), color-stop(61%, rgba(34,34,34,1)), color-stop(100%, rgba(34,34,34,1))); /* safari4+,chrome */
+    background:-webkit-radial-gradient(center, ellipse cover, rgba(71,130,214,1) 0%, rgba(34,34,34,1) 61%, rgba(34,34,34,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(71,130,214,1) 0%, rgba(34,34,34,1) 61%, rgba(34,34,34,1) 100%); /* opera 11.10+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(71,130,214,1) 0%, rgba(34,34,34,1) 61%, rgba(34,34,34,1) 100%); /* ie10+ */
+    background:radial-gradient(ellipse at center, rgba(71,130,214,1) 0%, rgba(34,34,34,1) 61%, rgba(34,34,34,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4782D6', endColorstr='#222222',GradientType=1 ); /* ie6-9 */
+  };
+
+  img {
+    height: 60%;
+    width: auto;
+    z-index: 6;
+  };
+};

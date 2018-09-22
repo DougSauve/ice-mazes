@@ -17,6 +17,14 @@ class MovementController {
       this.busy = false;
     };
 
+    this.pause = () => {
+      this.busy = true;
+    };
+
+    this.resume = () => {
+      this.busy = false;
+    };
+
     // document.onkeydown = this.getKeyPressed;
     
     this.getKeyPressed = (e) => {

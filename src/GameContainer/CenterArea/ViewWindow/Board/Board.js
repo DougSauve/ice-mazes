@@ -9,21 +9,40 @@ import setCurrentPosition from "./Board_Movement_Functions/setCurrentPosition";
 
 import MovementController from './Board_Movement_Functions/MovementController';
 
+import store from '../../../../App';
+
+import {setHighestLevelInLocalStorage} from '../../../../Functions/manipulateHighestLevelInLocalStorage';
+
+import WinModal from './WinModal/WinModal';
+
 //redux
 import {connect} from 'react-redux';
-import {setBoardData, setLevelStats, setStartingPosition, setLevelLoaded, setMovementController, setCurrentLevel} from '../../../../Redux/gameData';
+import {setBoardData, setLevelStats, setStartingPosition, setLevelLoaded, setMovementController, setCurrentLevel, setMovesTaken} from '../../../../Redux/gameData';
 
 class Board extends React.Component {
   state = {
     levelStats: null,
     boardData: null,
-    level: 1
+    currentLevel: 1,
+    showWinModal: false,
   };
 
   componentDidMount() {
     this.setUpLevel(); 
+
+    store.subscribe(this.checkCurrentLevelForUpdates);
   };
-  
+
+  checkCurrentLevelForUpdates = () => {
+    const currentLevelInStore = store.getState().gameDataReducer.currentLevel;
+    
+    if (this.state.currentLevel !== currentLevelInStore) {
+      this.setState(() => ({ currentLevel: currentLevelInStore }), () => { //causes an error message on starting a new game when there is one active at a higher level. Not sure why. Doesn't break the game - will come back to it later.
+        this.setUpLevel();
+      });
+    };
+  };
+
   setUpLevel = () => {
 
     this.populateState()
@@ -58,7 +77,7 @@ class Board extends React.Component {
 
   populateState = async() => {
     //get levelStats and boardData from file
-    const {levelStatsObject, boardDataObject} = await loadBoardData(this.state.level);
+    const {levelStatsObject, boardDataObject} = await loadBoardData(this.state.currentLevel);
 
     //set them in component state
     this.setState(() => ({
@@ -76,11 +95,16 @@ class Board extends React.Component {
 
   //passed in as a prop to movementController in this.setUpLevel
   win = () => {
-    alert(`you win! Level ${this.state.level} complete.`);
-    this.setState((prevState) => ({ level: ++prevState.level}), () => {
+    //mount win modal
+    this.setState(() => ({ showWinModal: true }));
+
+    this.setState((prevState) => ({ currentLevel: ++prevState.currentLevel }), () => {
       //update in redux
-      this.props.setCurrentLevel(this.state.level);
-      //set up the new level using the redux currentLevel
+      this.props.setCurrentLevel(this.state.currentLevel);
+      this.props.setMovesTaken(0);
+    
+      setHighestLevelInLocalStorage(this.state.currentLevel);
+    
       this.setUpLevel();
     });
   };
@@ -125,6 +149,12 @@ class Board extends React.Component {
             )
           })
         }
+
+        {/* Win Modal */}
+        <WinModal 
+          showWinModal = {this.state.showWinModal}
+          closeWinModal = {() => { this.setState(() => ({ showWinModal: false })) }} //This line is apparently calling setState on an unmounted component when a game is resumed, but only after a new game has been started and then they return to the menu.
+        />
       </div>
     );
   };
@@ -133,6 +163,7 @@ class Board extends React.Component {
 const mapStateToProps = ((state) => ({
   levelLoaded: state.gameDataReducer.levelLoaded,
   movementController: state.gameDataReducer.movementController,
+  currentLevel: state.gameDataReducer.currentLevel
 }));
 
 const mapDispatchToProps = {
@@ -141,7 +172,8 @@ const mapDispatchToProps = {
   setStartingPosition,
   setLevelLoaded,
   setMovementController,
-  setCurrentLevel
+  setCurrentLevel,
+  setMovesTaken
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

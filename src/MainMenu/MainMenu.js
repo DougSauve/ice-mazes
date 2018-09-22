@@ -3,44 +3,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import startNewGame from '../Functions/startNewGame';
-import resumeGame from '../Functions/resumeGame';
+import MenuButtons from './MenuButtons/MenuButtons';
 
-import Button from '../Components/Button';
+import Instructions from './Instructions/Instructions';
+import Controls from './Controls/Controls';
 
-import store from '../App';
-import {setMainView} from '../Redux/view'; 
+class MainMenu extends React.Component {
+  state = {
+    instructionsModalMounted: false,
+    controlsModalMounted: false,
+  };
 
-const MainMenu = (props) => (
-  <div>
-    Main Menu :)
+  render() {
+    return (
+      <div className = "main-menu">
+        {/* Title Bar */}
+        <div className = "main-menu__title">Ice Mazes</div>
+        
+        {/* Main Content Area */}
+        <div className = "main-menu__content">
 
-    <Button
-      className = "MainMenu__button--newGame"
-      onClick = {startNewGame.bind(this, props.store)}
-      value = "New Game"
-    />
-
-    <Button 
-      className = "MainMenu__button--resumeGame" 
-      onClick = {resumeGame.bind(this, props.store)}
-      value = "Resume Game"
-    />
-  
-    <Button 
-      className = "MainMenu__button--instructions" 
-      onClick = {(this, () => {store.dispatch(setMainView("Instructions"))} )}
-      value = "How To Play" 
-    />
-
-    <Button 
-      className = "MainMenu__button--controls" 
-      onClick = {(this, () => {store.dispatch(setMainView("Controls"))} )}
-      value = "Controls" 
-    />
+          {/* Left side of screen */}
+          <div className = "main-menu__menu-options-box">
     
-  </div>
-);
+           <MenuButtons 
+             closeInstructionsModal = { () => { this.setState(() => ({ instructionsModalMounted: true })) } }
+             closeControlsModal = { () => { this.setState(() => ({ controlsModalMounted: true })) } }
+           />
+    
+          </div>
+
+          {/* right side of screen */}
+          <div className = "main-menu__photo-box">
+    
+            <div className = "main-menu__photo-box__background" />
+            <img src = "./menu-penguin.png" />
+    
+          </div>
+        </div>
+
+        {/* modals */}
+        <Instructions
+          showInstructionsModal = {this.state.instructionsModalMounted}
+          closeInstructionsModal = {() => { this.setState(() => ({ instructionsModalMounted: false })) }}
+        />
+       
+        <Controls
+          showControlsModal = {this.state.controlsModalMounted}
+          closeControlsModal = {() => { this.setState(() => ({ controlsModalMounted: false })) }}
+        />
+
+      </div>
+    );
+  }
+} 
 
 MainMenu.propTypes = {
   showInstructions: PropTypes.func,

@@ -3,23 +3,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import LevelsMap from './LevelsMap';
+import LevelsMap from './LevelsMap/LevelsMap';
 import ViewWindow from './ViewWindow/ViewWindow';
 
 import {connect} from 'react-redux';
 
 const CenterArea = (props) => (
-  <div className = "CenterArea">
-    <div className = "TopPanel" />
+  <div className = "center-area">
+    
+    <div className = "center-area__top-panel">
+
+      <div className = "center-area__top-panel__display-area">
+         <div className = "center-area__top-panel__level-display">Level: {props.level}</div>
+         
+        <div className = "flex-spacer" />
+        
+        <div className = "center-area__top-panel__moves-display">Moves: {props.movesTaken}</div>
+      </div>
+    </div>
+    
     {
-      props.gameView === "LevelsMap" ?
-      // Grid showing all available levels. Can click on one to play that level.
-      //<LevelsMap /> :
-      <ViewWindow /> :
-      // Actual game. Whole level mounted, then it moves in the background as the player 'moves'. 
-      <ViewWindow />
+      props.gameView === "LevelsMap" && <LevelsMap />
     }
-    <div className = "BottomPanel" />
+
+    <ViewWindow />
+    
+    <div className = "center-area__bottom-panel" />
   </div>
 );
 
@@ -27,8 +36,11 @@ CenterArea.propTypes = {
   gameView: PropTypes.string,
 };
 
-const mapStateToProps = (store) => ({
-  gameView: store.viewReducer.gameView,
+const mapStateToProps = (state) => ({
+  gameView: state.viewReducer.gameView,
+  
+  level: state.gameDataReducer.levelStats.level,
+  movesTaken: state.gameDataReducer.movesTaken,
 });
 
 export default connect(mapStateToProps)(CenterArea);

@@ -1,4 +1,4 @@
-.CenterArea {
+.center-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,21 +11,53 @@
 
   z-index: 0;
 
-  .TopPanel {
+  .center-area__top-panel {
     @extend %panel;
+    display: flex;
+    flex-direction: column;
 
     box-shadow: 0 2px 2px #CCAAAA;
-  }
-  .BottomPanel {
+
+    .center-area__top-panel__display-area{
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+    
+      .center-area__top-panel__level-display{
+        padding: .3rem 2rem .3rem .3rem;
+        z-index: 3;
+
+        background: #3f51b5;
+
+        border-radius: 0 0 4rem 0;
+        border-bottom: 1px white solid;
+        border-right: 1px white solid;
+      };
+  
+      .center-area__top-panel__moves-display{
+        padding: .3rem .3rem .3rem 2rem;
+        z-index: 3;
+        
+        background: #f50057;
+
+        border-radius: 0 0 0 4rem;
+        border-bottom: 1px white solid;
+        border-left: 1px white solid;
+      };
+    };
+  };
+
+  .center-area__bottom-panel {
     @extend %panel; 
 
     box-shadow: 0 -2px 2px #CCAAAA;
-  }
-}
+  };
+};
 
 %panel {
   background: $background2;
   width: 100%;
-  flex-grow: 1;
+  flex: 1 1 2rem; 
   z-index: 2;
 }

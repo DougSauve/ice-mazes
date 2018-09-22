@@ -4,8 +4,8 @@ import MovementController from "../GameContainer/CenterArea/ViewWindow/Board/Boa
 
 //actions
 
-const resetAllData = () => ({
-  type: 'RESET_ALL_DATA'
+const resetGameData = () => ({
+  type: 'RESET_GAME_DATA'
 });
 
 const setMovesTaken = (movesTaken) => ({
@@ -49,7 +49,7 @@ const defaultState = {
   movesTaken: 0,
   currentInventory: [],
   boardData: null,
-  levelStats: null,
+  levelStats: {},
   levelLoaded: false,
   startingPosition: {
     x: null,
@@ -62,7 +62,7 @@ const defaultState = {
 //reducer
 const gameDataReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'RESET_ALL_DATA':
+    case 'RESET_GAME_DATA':
     return {...defaultState};
     case 'SET_MOVES_TAKEN':
     return {...state, movesTaken: action.movesTaken};
@@ -77,7 +77,11 @@ const gameDataReducer = (state = defaultState, action) => {
     case 'SET_MOVEMENT_CONTROLLER':
     return {...state, movementController: action.movementController};
     case 'SET_CURRENT_LEVEL':
-    return {...state, levelStats: {...state.levelStats, level: action.currentLevel} }
+    return {
+      ...state,
+      levelStats: {...state.levelStats, level: action.currentLevel},
+      currentLevel: action.currentLevel 
+    };
     default:
     return state;
   };
@@ -85,7 +89,7 @@ const gameDataReducer = (state = defaultState, action) => {
 
 export {
   gameDataReducer as default,
-  resetAllData,
+  resetGameData,
   setMovesTaken,
   setBoardData,
   setStartingPosition,

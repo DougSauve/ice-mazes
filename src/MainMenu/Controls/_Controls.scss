@@ -1,0 +1,23 @@
+.ControlsModal{
+  display: flex;
+}
+
+.Controls{
+  margin: auto;
+
+  padding: 5rem;
+
+  min-width: 25%;
+  max-width: 75%;
+
+  min-height: 25%;
+  max-height: 75%;
+
+  background: $background3;
+
+  @extend %flex-standard;
+
+  * {
+    margin: .3rem;
+  }
+};

@@ -62,14 +62,26 @@ Sunday Sep 8
 1. Finish refactoring MovementController (2:00)
 2. Add Gravel tile functionality and styling
 
-Monday Sep 9 1:15 @ 11:50
+Monday Sep 9 (8:45)
 1. Implement tiny images for tiles
 2. Make loading new level truly asynchronous
 3. Refactor Board
+4. Styled the main menu using Material.ui buttons
+5. Style the game page with Material.ui buttons
+6. Get the levelsMap working
+7. Style the levelsMap
 
-*Style the game pages with Material.ui
+~ Convention and a lot of moving stuff!
+
+Friday, Sep 21 (1:00)
+
+1. Implement material-ui for modals, rework main menu to do modals this way
+2. Refactor MainMenu to be more organized
 
 further:
+
+Wire up win modal
+Create Instructions and Controls within their modals
 
 Add locks and keys and inventory functionality... switches to raise/lower blocks?
 Add multi-floor functionality, including ladders, spirals and landings

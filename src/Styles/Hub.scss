@@ -1,15 +1,20 @@
 @import './Settings';
 @import './Base_Styles';
 
+@import '../MainMenu/MainMenu';
+@import '../MainMenu/Controls/Controls';
+@import '../MainMenu/Instructions/Instructions';
+
 @import '../GameContainer/GameContainer';
 @import '../GameContainer/Inventory/Inventory';
 @import '../GameContainer/Menu/Menu';
 
 @import '../GameContainer/CenterArea/CenterArea';
+@import '../GameContainer/CenterArea/LevelsMap/LevelsMap';
 @import '../GameContainer/CenterArea/ViewWindow/ViewWindow';
 @import '../GameContainer/CenterArea/ViewWindow/Board/Board';
+@import '../GameContainer/CenterArea/ViewWindow/Board/WinModal/WinModal';
 @import '../GameContainer/CenterArea/ViewWindow/Dude/Dude';
 @import '../GameContainer/CenterArea/ViewWindow/Board/Board_Styles/Row';
 @import '../GameContainer/CenterArea/ViewWindow/Board/Board_Styles/Tiles';
-// @import '../GameContainer/CenterArea/ViewWindow/Board/Board_Styles/Walls';
 

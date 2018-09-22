@@ -1,0 +1,38 @@
+.levels-map {
+  @extend %flex-standard;
+
+  position: absolute;
+
+  height: 26rem;
+  width: 26rem;
+
+  z-index: 5;
+  
+  background: $background2;
+};
+
+.levels-map__message {
+  margin: .5rem;
+
+  font-size: 26px;
+};
+
+.levels-map__level-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+  flex-wrap: wrap;
+  
+  .levels-map__level-button {
+    margin: .5rem;
+  
+    height: 3rem;
+    width: 2rem;
+  };
+};
+
+
+.levels-map__return-to-game {
+  margin: .5rem;
+};
