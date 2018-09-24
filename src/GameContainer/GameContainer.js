@@ -18,7 +18,12 @@ const GameContainer = (props) => (
     }
 
     {/* Main viewing area. Can house <LevelsMap /> or <Board /> */}
-    <CenterArea />
+    {
+      (props.mainView === 'GameContainer') &&
+      <CenterArea 
+        onClick = {() => {console.log('clicked')}}
+      />
+    }
 
     {/* shown as icons, words on hover */}
     {
@@ -31,6 +36,7 @@ const GameContainer = (props) => (
 
 const mapStateToProps = ((state) => ({
   levelLoaded: state.gameDataReducer.levelLoaded,
+  mainView: state.viewReducer.mainView,
 }));
 
 export default connect(mapStateToProps)(GameContainer);

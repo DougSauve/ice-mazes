@@ -18,7 +18,9 @@ const Menu = (props) => (
       variant = "contained"
       color = "secondary"
       className = "menu__button--link-to-main-menu"
-      onClick = {(this, () => {props.setMainView("MainMenu")} )}
+      onClick = {(this, () => {
+        props.setMainView("MainMenu");  
+      })}
     >
       Exit to Menu
     </Button>

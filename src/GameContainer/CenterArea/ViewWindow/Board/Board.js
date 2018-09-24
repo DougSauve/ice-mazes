@@ -17,34 +17,50 @@ import WinModal from './WinModal/WinModal';
 
 //redux
 import {connect} from 'react-redux';
-import {setBoardData, setLevelStats, setStartingPosition, setLevelLoaded, setMovementController, setCurrentLevel, setMovesTaken} from '../../../../Redux/gameData';
+import {
+  setBoardData,
+  setLevelStats, 
+  setStartingPosition, 
+  setLevelLoaded, 
+  setMovementController, 
+  setCurrentLevel, 
+  setMovesTaken
+} from '../../../../Redux/gameData';
 
 class Board extends React.Component {
   state = {
     levelStats: null,
     boardData: null,
-    currentLevel: 1,
+    currentLevel: this.props.currentLevel,
     showWinModal: false,
+    storeSubscription: null, //set in componentDidMount, removed in componentWillUnmount
   };
 
   componentDidMount() {
     this.setUpLevel(); 
 
-    store.subscribe(this.checkCurrentLevelForUpdates);
+    this.setState(() => ({ storeSubscription: store.subscribe(this.checkCurrentLevelForUpdates) })); 
   };
+
+  componentWillUnmount() {
+    //cancel store subscription
+    this.state.storeSubscription();
+  }
 
   checkCurrentLevelForUpdates = () => {
     const currentLevelInStore = store.getState().gameDataReducer.currentLevel;
+
+    console.log('updating');
     
     if (this.state.currentLevel !== currentLevelInStore) {
-      this.setState(() => ({ currentLevel: currentLevelInStore }), () => { //causes an error message on starting a new game when there is one active at a higher level. Not sure why. Doesn't break the game - will come back to it later.
+      this.setState(() => ({ currentLevel: currentLevelInStore }), () => {
         this.setUpLevel();
       });
     };
   };
 
   setUpLevel = () => {
-
+console.log('setting up');
     this.populateState()
     .then(() => {
       
@@ -52,6 +68,7 @@ class Board extends React.Component {
       const {x, y} = findEntryCoordinates(this.state.boardData);
       setCurrentPosition(x, y);
       this.props.setStartingPosition(x, y);
+      this.props.setMovesTaken(0);
     
         return {x, y};
 
@@ -78,7 +95,6 @@ class Board extends React.Component {
   populateState = async() => {
     //get levelStats and boardData from file
     const {levelStatsObject, boardDataObject} = await loadBoardData(this.state.currentLevel);
-
     //set them in component state
     this.setState(() => ({
       boardData: boardDataObject,
@@ -88,7 +104,6 @@ class Board extends React.Component {
     //set them in redux state as well
     this.props.setLevelStats(levelStatsObject);
     this.props.setBoardData(boardDataObject);
-    this.props.setLevelLoaded(true);
 
     return Promise.resolve();
   };
@@ -98,15 +113,14 @@ class Board extends React.Component {
     //mount win modal
     this.setState(() => ({ showWinModal: true }));
 
-    this.setState((prevState) => ({ currentLevel: ++prevState.currentLevel }), () => {
-      //update in redux
-      this.props.setCurrentLevel(this.state.currentLevel);
-      this.props.setMovesTaken(0);
-    
-      setHighestLevelInLocalStorage(this.state.currentLevel);
-    
-      this.setUpLevel();
-    });
+    // this.setState((prevState) => ({ currentLevel: ++prevState.currentLevel }), () => {
+    //update in redux
+    const nextLevel = parseInt(this.state.currentLevel + 1);
+
+    setHighestLevelInLocalStorage(nextLevel);
+    this.props.setCurrentLevel(nextLevel);
+  
+    // this.setUpLevel();
   };
 
   render() {
@@ -151,10 +165,14 @@ class Board extends React.Component {
         }
 
         {/* Win Modal */}
-        <WinModal 
-          showWinModal = {this.state.showWinModal}
-          closeWinModal = {() => { this.setState(() => ({ showWinModal: false })) }} //This line is apparently calling setState on an unmounted component when a game is resumed, but only after a new game has been started and then they return to the menu.
-        />
+        {
+          (this.state.showWinModal) && //this flag is to stop it preloading every time the component gets updated
+          <WinModal 
+            showWinModal = {this.state.showWinModal}
+            closeWinModal = {() => { this.setState(() => ({ showWinModal: false })) }}
+            currentLevel = {this.props.currentLevel}
+          />
+        }
       </div>
     );
   };

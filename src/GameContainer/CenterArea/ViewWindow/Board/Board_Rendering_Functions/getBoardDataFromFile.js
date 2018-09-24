@@ -2,19 +2,25 @@
 
 import axios from 'axios';
 
-const getBoardDataFromFile = (level) => {
+const getBoardDataFromFile = async (level) => {
   
   //request file from server
-  return new Promise((resolve, reject) => {
-    axios.get('/levels/' + level)  
-    .then((res) => {
-      resolve(res);
-    })
-    .catch((e) => {
-      console.log('error' + e);
-      reject(e);
-    });
-  });
+
+  try {
+    return await axios.get('levels/' + level);
+  } catch (error) {
+    console.log('asdf error:', error);
+  }
+  // return new Promise(async(resolve, reject) => { 
+  //   axios.get('/levels/' + level)  
+  //   .then((res) => {
+  //     console.log('RES IS', res);
+  //     resolve(res);
+  //   })
+  //   .catch((e) => {
+  //     reject(e);
+  //   });
+  // });
 };
 
 export default getBoardDataFromFile;
