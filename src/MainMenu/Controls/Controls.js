@@ -13,13 +13,51 @@ const Controls = (props) => (
       open = {props.showControlsModal}
     >
       <div className = "Controls">
-        {/* organize this and style it */}
-        <div>Controls:</div>
+        <div className = "Controls__title">Controls:</div>
        
-        <div>Move left: Left Arrow</div>
-        <div>Move up: Up Arrow</div>
-        <div>Move right: Right Arrow</div>
-        <div>Move down: Down Arrow</div>
+        <div className = "Controls__row">
+          
+          <div className = "demo__black_tile">
+            <div className = "arrow_tile_left">
+              <img src = "./arrow.png" />
+            </div>
+          </div>
+          
+          <div className = "Controls__content">Move Left</div>
+        </div>
+        
+        <div className = "Controls__row">
+          
+         <div className = "demo__black_tile">
+            <div className = "arrow_tile_right">
+              <img src = "./arrow.png" />
+            </div>
+          </div>
+
+          <div className = "Controls__content">Move Right</div>
+        </div>
+
+        <div className = "Controls__row">
+          
+         <div className = "demo__black_tile">
+            <div className = "arrow_tile_up">
+              <img src = "./arrow.png" />
+            </div>
+          </div>
+
+          <div className = "Controls__content">Move Up</div>
+        </div>
+
+        <div className = "Controls__row">
+
+         <div className = "demo__black_tile">
+            <div className = "arrow_tile_down">
+              <img src = "./arrow.png" />
+            </div>
+          </div>
+          
+          <div className = "Controls__content">Move Down</div>
+        </div>
 
         <Button 
           variant = "contained"
@@ -27,7 +65,7 @@ const Controls = (props) => (
           className = "Controls__button--close"
           onClick = {props.closeControlsModal}
         >
-          Close
+          Got it
         </Button>
       </div>
     </Modal>

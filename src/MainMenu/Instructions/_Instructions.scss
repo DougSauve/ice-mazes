@@ -13,11 +13,57 @@
   min-height: 25%;
   max-height: 75%;
 
-  background: $background3;
+  background: black;
+
+  border: 1rem solid $background1;
 
   @extend %flex-standard;
+  align-items: flex-start;
 
-  * {
-    margin: .3rem;
-  }
+  .Instructions__title {
+    align-self: center;
+
+    margin: 1rem;
+
+    color: $primary_color;
+    font-size: 2.6rem;
+  };
+  
+  .Instructions__row {
+    display: flex;
+    flex-direction: row;
+    
+    margin-bottom: 3rem;
+  
+    .demo__black_tile {
+      height: 2rem;
+      width: 2rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: black;
+      border: 2px black solid;
+    };
+
+    .Instructions__content {
+      margin-left: 1rem;
+      
+      line-height: 2rem;
+      
+      font-size: 1.3rem;
+      color: $secondary_color;
+
+    };
+  };
+
+  .Instructions__row > * {
+    margin-right: .3rem;
+  };
+
+  .Instructions__button--close {
+    margin: 1rem;
+    align-self: center;
+  };
 };

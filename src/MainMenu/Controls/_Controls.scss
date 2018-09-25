@@ -13,11 +13,89 @@
   min-height: 25%;
   max-height: 75%;
 
-  background: $background3;
+  background: black;
+
+  border: 1rem solid $background1;
 
   @extend %flex-standard;
+  align-items: flex-start;
 
-  * {
-    margin: .3rem;
-  }
+  .Controls__title {
+    align-self: center;
+
+    margin: 1rem;
+
+    color: $primary_color;
+    font-size: 2.6rem;
+  };
+  
+  .Controls__row {
+    display: flex;
+    flex-direction: row;
+    
+    margin-bottom: 3rem;
+  
+    .demo__black_tile {
+      height: 2rem;
+      width: 2rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: black;
+      border: 2px black solid;
+    };
+
+    .Controls__content {
+      margin-left: 1rem;
+      
+      line-height: 2rem;
+      
+      font-size: 1.3rem;
+      color: $secondary_color;
+
+    };
+  };
+
+  .Controls__row > * {
+    margin-right: .3rem;
+  };
+
+  .Controls__button--close {
+    margin: 1rem;
+    align-self: center;
+  };
+};
+
+%arrow_tile {
+
+  height: 100%;
+  width: 100%;
+
+  background: black;
+
+  img {
+    width: 100%;
+    height: 100%;
+  };
+};
+
+.arrow_tile_left {
+  @extend %arrow_tile;
+};
+
+.arrow_tile_right {
+  @extend %arrow_tile;
+  transform: scaleX(-1);
+};
+
+.arrow_tile_up {
+  @extend %arrow_tile;
+  transform: rotate(90deg);
+};
+
+.arrow_tile_down {
+  @extend %arrow_tile;
+  transform: rotate(-90deg);
 };

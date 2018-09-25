@@ -89,6 +89,8 @@ const createBoardDataArrayWithClassNames = (boardArray) => {
           return 'entry';
         case '}':
           return 'exit';
+        case 'y':
+          return 'you-win';
         default:
         return 'outerWallTopLeftCorner';
       };

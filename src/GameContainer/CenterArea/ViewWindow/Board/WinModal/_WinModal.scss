@@ -1,8 +1,8 @@
-.WinModal {
+.WinModal{
   display: flex;
-};
+}
 
-.Win {
+.Win{
   margin: auto;
 
   padding: 5rem;
@@ -13,7 +13,9 @@
   min-height: 25%;
   max-height: 75%;
 
-  background: $background3;
+  background: black;
+
+  border: 1rem solid $background1;
 
   @extend %flex-standard;
 
@@ -22,6 +24,12 @@
   }
 };
 
+.Win__praise {
+  font-size: 1.8rem;
+  margin: 1rem;
+};
+
 .WinModal__buton--close {
-  text-transform: none !important;
+  text-transform: none !important; //This is bad practice - how do I do it properly?
+  font-size: 1rem !important;
 };

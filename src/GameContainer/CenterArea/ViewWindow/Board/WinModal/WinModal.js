@@ -22,7 +22,7 @@ class WinModal extends React.Component {
         open = {this.props.showWinModal}
       >
         <div className = "Win">
-          <div>
+          <div className = "Win__praise">
             {ChooseWinPraise()}
           </div>
     

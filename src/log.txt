@@ -88,20 +88,16 @@ Saturday, Sep 22 (2:30)
 Sunday, Sep 23 (1:30)
 1. Get an elegant finish to the game after the last level
 
-Monday, Set 24 1:45
-fixed: new game and resume game aren't behaving properly
-fixed game loading twice and triggering unmounted component setState, other similar optimizations
+Monday, Set 24 (5:15)
+1. fixed - new game and resume game aren't behaving properly
+2. fixed game loading twice and triggering unmounted component setState, other similar optimizations
+3. style controls, instructions, and win
+4. add controls and instructions to main game screen
 
+add 'you win', and then version 1.0.0 is ready. :)
 
-
-further:
-
-style controls, instructions, and win
-add controls to bottom panel and instructions to top panel
+gameplay:
+second layer - add:
+'you win' to win screen
 Add locks and keys and inventory functionality... switches to raise/lower blocks?
 Add multi-floor functionality, including ladders, spirals and landings
-
-
-bugs:
-clicking outside of the game or something removes the event listener for the arrow keys
-win messages are being called twice. I think a few things are. edit: this only happens with the developer tools. I think this might be something at the browser level that I can't reach.

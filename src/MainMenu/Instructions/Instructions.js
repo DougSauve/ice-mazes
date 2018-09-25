@@ -13,13 +13,65 @@ const Instructions = (props) => (
       open = {props.showInstructionsModal}
     >
       <div className = "Instructions">
-        {/* organize this and style it */}
-        <div>Instructions:</div>
+        <div className = "Instructions__title">How to Play:</div>
        
-        <div>Guide your penguin through the ice maze to the red exit!</div>
-        <div>White tiles are ice. The penguin can't stop or turn until he lands on something else.</div>
-        <div>The penguin stops against rocks.</div>
-        <div>The penguin stops on top of a patch of sand.</div>
+        <div className = "Instructions__row">
+          
+        <div className = "Board__tile">
+            <div className = "entry_tile">
+              <img src = "./cave.png" />
+            </div>
+          </div>
+
+          <div className = "Board__tile">
+            <div className = "exit_tile">
+              <img src = "./cave.png" />
+            </div>
+          </div>
+          
+          <div className = "Instructions__content">Guide the penguin through the ice maze to the red exit!</div>
+        </div>
+        
+        <div className = "Instructions__row">
+          
+          <div className = "demo__black_tile" />
+          
+          <div className = "Board__tile">
+            <div className = "ice_tile"/>
+          </div>
+
+          <div className = "Instructions__content">The penguin can't stop or turn on ice.</div>
+        </div>
+
+        <div className = "Instructions__row">
+          
+          <div className = "Board__tile">
+            <div className = "wall_tile">
+              <img src = "./rock1.png" />
+            </div>
+          </div>
+
+          <div className = "Board__tile">
+            <div className = "wall_tile">
+              <img src = "./rock2.png" />
+            </div>
+          </div>
+
+          <div className = "Instructions__content">The penguin stops when it runs into a rock.</div>
+        </div>
+
+        <div className = "Instructions__row">
+
+          <div className = "demo__black_tile" />
+          
+          <div className = "Board__tile">
+            <div className = "gravel_tile">
+              <img src = "./sand.png" />
+            </div>
+          </div>
+          
+          <div className = "Instructions__content">The penguin doesn't slide on sand patches.</div>
+        </div>
 
         <Button 
           variant = "contained"
@@ -27,7 +79,7 @@ const Instructions = (props) => (
           className = "Instructions__button--close"
           onClick = {props.closeInstructionsModal}
         >
-          Close
+          Got it
         </Button>
       </div>
     </Modal>
@@ -36,7 +88,7 @@ const Instructions = (props) => (
 
 Instructions.propTypes = {
   showInstructionsModal: PropTypes.bool,
-  closeInstructionsModal: PropTypes.func
+  closeInstructionsModal: PropTypes.func,
 };
 
 export default Instructions;

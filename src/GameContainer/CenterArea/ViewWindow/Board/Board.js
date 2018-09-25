@@ -153,6 +153,10 @@ console.log('setting up');
                           {(tile === 'entry' || tile === 'exit') &&
                           <img src = 'cave.png' />
                           }
+                          {(tile === 'you-win') &&
+                            <div>You Win!</div>
+                          }
+
                         </div>
                         
                       </div>

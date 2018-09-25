@@ -17,6 +17,10 @@ const CenterArea = (props) => (
          <div className = "center-area__top-panel__level-display">Level: {props.level}</div>
          
         <div className = "flex-spacer" />
+
+        <div className = "center-area__top-panel__title">Ice Mazes</div>
+
+        <div className = "flex-spacer" />
         
         <div className = "center-area__top-panel__moves-display">Moves: {props.movesTaken}</div>
       </div>
