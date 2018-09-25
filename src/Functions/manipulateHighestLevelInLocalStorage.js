@@ -8,7 +8,12 @@ const setHighestLevelInLocalStorage = (level) => {
 };
 
 const getHighestLevelInLocalStorage = () => {
-  return localStorage.getItem('highestLevel');
+  if (localStorage.getItem('highestLevel')) {
+    return localStorage.getItem('highestLevel');
+  } else {
+    localStorage.setItem('highestLevel', 1);
+    return '1';
+  };
 };
 
 export {setHighestLevelInLocalStorage, getHighestLevelInLocalStorage};

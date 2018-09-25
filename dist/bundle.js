@@ -6499,7 +6499,7 @@ eval("\n\n// styles\n\nObject.defineProperty(exports, \"__esModule\", {\n  value
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar setHighestLevelInLocalStorage = function setHighestLevelInLocalStorage(level) {\n  var currentHighestLevel = getHighestLevelInLocalStorage();\n  if (level > currentHighestLevel) {\n    localStorage.setItem('highestLevel', level);\n  };\n};\n\nvar getHighestLevelInLocalStorage = function getHighestLevelInLocalStorage() {\n  return localStorage.getItem('highestLevel');\n};\n\nexports.setHighestLevelInLocalStorage = setHighestLevelInLocalStorage;\nexports.getHighestLevelInLocalStorage = getHighestLevelInLocalStorage;\n\n//# sourceURL=webpack:///./src/Functions/manipulateHighestLevelInLocalStorage.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar setHighestLevelInLocalStorage = function setHighestLevelInLocalStorage(level) {\n  var currentHighestLevel = getHighestLevelInLocalStorage();\n  if (level > currentHighestLevel) {\n    localStorage.setItem('highestLevel', level);\n  };\n};\n\nvar getHighestLevelInLocalStorage = function getHighestLevelInLocalStorage() {\n  if (localStorage.getItem('highestLevel')) {\n    return localStorage.getItem('highestLevel');\n  } else {\n    localStorage.setItem('highestLevel', 1);\n    return '1';\n  };\n};\n\nexports.setHighestLevelInLocalStorage = setHighestLevelInLocalStorage;\nexports.getHighestLevelInLocalStorage = getHighestLevelInLocalStorage;\n\n//# sourceURL=webpack:///./src/Functions/manipulateHighestLevelInLocalStorage.js?");
 
 /***/ }),
 
