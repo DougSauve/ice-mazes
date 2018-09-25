@@ -6,7 +6,7 @@ const path = require('path');
 
 const {readLevelData} = require('./readLevelData');
 
-const port = 4203;
+const port = process.event.PORT || 4203;
 
 const app = new express();
 
