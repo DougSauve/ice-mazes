@@ -67,35 +67,3 @@
     align-self: center;
   };
 };
-
-%arrow_tile {
-
-  height: 100%;
-  width: 100%;
-
-  background: black;
-
-  img {
-    width: 100%;
-    height: 100%;
-  };
-};
-
-.arrow_tile_left {
-  @extend %arrow_tile;
-};
-
-.arrow_tile_right {
-  @extend %arrow_tile;
-  transform: scaleX(-1);
-};
-
-.arrow_tile_up {
-  @extend %arrow_tile;
-  transform: rotate(90deg);
-};
-
-.arrow_tile_down {
-  @extend %arrow_tile;
-  transform: rotate(-90deg);
-};

@@ -18,7 +18,7 @@ const Controls = (props) => (
         <div className = "Controls__row">
           
           <div className = "demo__black_tile">
-            <div className = "arrow_tile_left">
+            <div className = "arrow-left_tile">
               <img src = "./arrow.png" />
             </div>
           </div>
@@ -29,7 +29,7 @@ const Controls = (props) => (
         <div className = "Controls__row">
           
          <div className = "demo__black_tile">
-            <div className = "arrow_tile_right">
+            <div className = "arrow-right_tile">
               <img src = "./arrow.png" />
             </div>
           </div>
@@ -40,7 +40,7 @@ const Controls = (props) => (
         <div className = "Controls__row">
           
          <div className = "demo__black_tile">
-            <div className = "arrow_tile_up">
+            <div className = "arrow-up_tile">
               <img src = "./arrow.png" />
             </div>
           </div>
@@ -51,7 +51,7 @@ const Controls = (props) => (
         <div className = "Controls__row">
 
          <div className = "demo__black_tile">
-            <div className = "arrow_tile_down">
+            <div className = "arrow-down_tile">
               <img src = "./arrow.png" />
             </div>
           </div>

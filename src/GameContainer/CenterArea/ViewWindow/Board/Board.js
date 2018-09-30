@@ -9,14 +9,13 @@ import setCurrentPosition from "./Board_Movement_Functions/setCurrentPosition";
 
 import MovementController from './Board_Movement_Functions/MovementController';
 
-import store from '../../../../App';
-
 import {setHighestLevelInLocalStorage} from '../../../../Functions/manipulateHighestLevelInLocalStorage';
 
 import WinModal from './WinModal/WinModal';
 
 //redux
 import {connect} from 'react-redux';
+import store from '../../../../App';
 import {
   setBoardData,
   setLevelStats, 
@@ -49,8 +48,6 @@ class Board extends React.Component {
 
   checkCurrentLevelForUpdates = () => {
     const currentLevelInStore = store.getState().gameDataReducer.currentLevel;
-
-    console.log('updating');
     
     if (this.state.currentLevel !== currentLevelInStore) {
       this.setState(() => ({ currentLevel: currentLevelInStore }), () => {
@@ -60,7 +57,6 @@ class Board extends React.Component {
   };
 
   setUpLevel = () => {
-console.log('setting up');
     this.populateState()
     .then(() => {
       
@@ -82,8 +78,10 @@ console.log('setting up');
           this.win
         )
       );
-    
-      document.onkeydown = this.props.movementController.getKeyPressed;
+
+      document.addEventListener('keydown', (event) => {
+        this.props.movementController.getKeyPressed(event.key);
+      });
     
     }).then(() => {
 
@@ -145,13 +143,16 @@ console.log('setting up');
                         >
                           {/* images */}
                           {tile === 'gravel' &&
-                          <img src = 'sand.png' />
+                          <img src = './sand.png' />
                           }
                           {tile === 'wall' &&
-                          <img src = {`rock${Math.ceil(Math.random() * 2)}.png`} /> //rock1 or rock2
+                          <img src = {`./rock${Math.ceil(Math.random() * 2)}.png`} /> //rock1 or rock2
                           }
                           {(tile === 'entry' || tile === 'exit') &&
-                          <img src = 'cave.png' />
+                          <img src = './cave.png' />
+                          }
+                          {(tile.includes('arrow')) &&
+                          <img src = './arrow.png' />
                           }
                           {(tile === 'you-win') &&
                             <div>You Win!</div>
@@ -185,7 +186,7 @@ console.log('setting up');
 const mapStateToProps = ((state) => ({
   levelLoaded: state.gameDataReducer.levelLoaded,
   movementController: state.gameDataReducer.movementController,
-  currentLevel: state.gameDataReducer.currentLevel
+  currentLevel: state.gameDataReducer.currentLevel,
 }));
 
 const mapDispatchToProps = {

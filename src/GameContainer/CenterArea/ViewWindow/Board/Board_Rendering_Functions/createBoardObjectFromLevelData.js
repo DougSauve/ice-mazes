@@ -85,6 +85,16 @@ const createBoardDataArrayWithClassNames = (boardArray) => {
           return 'wall';
         case '-':
           return getOuterWallClassName(indexOfRow, indexOfTile, boardArray.length, row.length);
+        case '<':
+          return 'arrow-left';
+        case '>':
+          return 'arrow-right';
+        case '<':
+          return 'arrow-left';
+        case '^':
+          return 'arrow-up';
+        case 'v':
+          return 'arrow-down';      
         case '{':
           return 'entry';
         case '}':

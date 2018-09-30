@@ -42,6 +42,36 @@
   };
 };
 
+%arrow_tile {
+
+  height: 100%;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+  };
+};
+
+.arrow-left_tile {
+  @extend %arrow_tile;
+};
+
+.arrow-right_tile {
+  @extend %arrow_tile;
+  transform: scaleX(-1);
+};
+
+.arrow-up_tile {
+  @extend %arrow_tile;
+  transform: rotate(90deg);
+};
+
+.arrow-down_tile {
+  @extend %arrow_tile;
+  transform: rotate(-90deg);
+};
+
 .entry_tile {
   @extend %tile-core;
   

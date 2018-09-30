@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 import ChooseWinPraise from './ChooseWinPraise';
 import ChooseWinThanks from './ChooseWinThanks';
 
+//connecting this component because updating is a delicate issue in the parent component (Board) and this is going to be less messy.
+import {connect} from 'react-redux';
+
 class WinModal extends React.Component {
 
   shouldComponentUpdate(prevProps) {
@@ -20,8 +23,11 @@ class WinModal extends React.Component {
       <Modal
         className = "WinModal"
         open = {this.props.showWinModal}
+        onClose = {this.props.closeWinModal}
       >
         <div className = "Win">
+          <div className = "Win__moves-used">You did the puzzle in {this.props.movesTaken} moves!</div>
+          
           <div className = "Win__praise">
             {ChooseWinPraise()}
           </div>
@@ -49,6 +55,11 @@ WinModal.propTypes = {
   showWinModal: PropTypes.bool,
   closeWinModal: PropTypes.func,
   currentLevel: PropTypes.number,
+  movesTaken: PropTypes.number,
 };
 
-export default WinModal;
+const mapStateToProps = ((state) => ({
+  movesTaken: state.gameDataReducer.movesTaken,
+}));
+
+export default connect(mapStateToProps)(WinModal);

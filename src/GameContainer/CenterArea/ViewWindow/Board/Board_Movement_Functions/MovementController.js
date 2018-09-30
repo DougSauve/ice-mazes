@@ -1,5 +1,8 @@
 import animateMovement from "./animateMovement";
 
+import store from '../../../../../App';
+import {setMovesTaken} from '../../../../../Redux/gameData';
+
 "use strict"
 
 class MovementController {
@@ -10,6 +13,8 @@ class MovementController {
     this.x = x;
     this.y = y;
     this.busy = false;
+
+    this.arrowTripped = null;
 
     this.reset = () => {
       this.x = this.startingX;
@@ -30,130 +35,26 @@ class MovementController {
     this.getKeyPressed = (e) => {
       if (this.busy === true) return;
       this.busy = true;
-      const event = e || window.event;
 
-      if (event.keyCode === 37) this.move('left');
-      if (event.keyCode === 38) this.move('up');
-      if (event.keyCode === 39) this.move('right');
-      if (event.keyCode === 40) this.move('down');
+      switch(e) {
+        case 'ArrowLeft': 
+        this.move('left');
+        break;
+        case 'ArrowUp': 
+        this.move('up');
+        break;
+        case 'ArrowRight': 
+        this.move('right');
+        break;
+        case 'ArrowDown': 
+        this.move('down');
+        break;
+        default:
+        this.busy = false;
+      };
+
     };
 
-    // this.moveLeft = () => {
-    //   let tileToLeft = boardData[this.y][this.x-1];
-    //   if (tileToLeft !== 'ice') {
-    //     this.busy = false;
-    //     return;
-    //   };
-
-    //   let tilesToMove = 0;
-    //   let goingOutEntry = false;
-        
-    //   //calculates how many tiles to move and mutates this.x and this.y
-    //   while (tileToLeft === 'ice' || tileToLeft === 'exit') {
-    //     this.x--;
-    //     tileToLeft = boardData[this.y][this.x-1];
-    //     tilesToMove++;
-      
-    //     if(tileToLeft === 'entry') {
-    //       goingOutEntry = true; 
-    //       this.y -= tilesToMove;
-    //       break; 
-    //     };
-    //   };
-
-    //   if (goingOutEntry) {
-    //       this.busy = false;
-    //       return;
-    //   };
-      
-    //   move('left', tilesToMove)
-    //     .then(() => {
-    //       if (boardData[this.y][this.x] === 'exit') {
-    //         win();
-    //       } else {
-    //         this.busy = false;
-    //       }
-    //     });
-    //   };
-
-    // this.moveUp = () => {
-    //   let tileAbove = boardData[this.y-1][this.x];
-    //   if (tileAbove !== 'ice') {
-    //     this.busy = false;
-    //     return;
-    //   };
-
-    //   let tilesToMove = 0;
-    //   let goingOutEntry = false;
-
-    //   //calculates how many tiles to move and mutates this.x and this.y
-    //   while (tileAbove === 'ice' || tileAbove === 'exit') {
-    //     this.y--;
-    //     tileAbove = boardData[this.y-1][this.x];
-    //     tilesToMove++;
-      
-    //     if(tileAbove === 'entry') {
-    //       goingOutEntry = true; 
-    //       this.y -= tilesToMove;
-    //       break; 
-    //     };
-    //   };
-
-    //   if (goingOutEntry) {
-    //       this.busy = false;
-    //       return;
-    //   };
-
-    //   move('up', tilesToMove)
-    //   .then(() => {
-    //     if (boardData[this.y][this.x] === 'exit') {
-    //       win();
-    //     } else {
-    //       this.busy = false;
-    //     }
-    //   });
-    // };
-
-    // this.moveRight = () => {
-    //   let tileToRight = boardData[this.y][this.x+1];
-    //   if (tileToRight !== 'ice') {
-    //     this.busy = false;
-    //     return;
-    //   };
-
-    //   let tilesToMove = 0;
-    //   let goingOutEntry = false;
-  
-    //   //calculates how many tiles to move and mutates this.x and this.y
-    //   while (tileToRight === 'ice' || tileToRight === 'exit') {
-    //     this.x++;
-        
-    //     tileToRight = boardData[this.y][this.x+1];
-    //     tilesToMove++;
-
-    //     if(tileToRight === 'exit'){}
-      
-    //     if(tileToRight === 'entry') {
-    //       goingOutEntry = true; 
-    //       this.y -= tilesToMove;
-    //       break; 
-    //     };
-    //   };
-
-    //   if (goingOutEntry) {
-    //       this.busy = false;
-    //       return;
-    //   };
-  
-    //   move('right', tilesToMove)
-    //   .then(() => {
-    //     if (boardData[this.y][this.x] === 'exit') {
-    //       win();
-    //     } else {
-    //       this.busy = false;
-    //     }
-    //   });
-    // };  
     this.getTileAheadOf = (currentX, currentY, direction) => {
       
       //vertical moves must be checked before being returned because the first index of the array might return undefined, which throws an error when the program tries to get a nested index within that undefined. On horizontal moves, it is already the second nested value that becomes undefined. The tile parser handles undefined as an outer wall. 
@@ -193,7 +94,8 @@ class MovementController {
       //switch: 
       //ice, landing = slide;
       //exit, gravel, spiral, ladder = stop on;
-      //wall, outerWall, block = stop before; 
+      //wall, outerWall, block = stop before;
+      //arrows = redirect; 
       //entry, pit = don't move
 
       while (moveComplete === false) {
@@ -219,7 +121,32 @@ class MovementController {
           tilesToMove = 0;
           moveComplete = true;
           break;
-          
+
+          //arrows
+          case 'arrow-left':
+          tilesToMove++;
+          moveComplete = true;
+          this.arrowTripped = 'left';
+          break;
+
+          case 'arrow-up':
+          tilesToMove++;
+          moveComplete = true;
+          this.arrowTripped = 'up';
+          break;
+
+          case 'arrow-right':
+          tilesToMove++;
+          moveComplete = true;
+          this.arrowTripped = 'right';
+          break;
+
+          case 'arrow-down':
+          tilesToMove++;
+          moveComplete = true;
+          this.arrowTripped = 'down';
+          break;
+
           //stop before
           case 'wall':
           case 'block':
@@ -251,12 +178,24 @@ class MovementController {
       if (tilesToMove === 0) {
         this.busy = false;
         return;
-      };
+      }
+
       animateMovement(direction, tilesToMove)
       .then(() => {
+
+        if (this.arrowTripped !== null){
+          const tempArrow = this.arrowTripped;
+          this.arrowTripped = null;
+          this.move(tempArrow);
+        } else {
+          store.dispatch(setMovesTaken(store.getState().gameDataReducer.movesTaken + 1));
+        };
+
         if (boardData[this.y][this.x] === 'exit') {
           win();
         };
+
+
         this.busy = false;
       });
     };

@@ -88,13 +88,24 @@ Saturday, Sep 22 (2:30)
 Sunday, Sep 23 (1:30)
 1. Get an elegant finish to the game after the last level
 
-Monday, Set 24 (5:15)
+Monday, Sep 24 (5:15)
 1. fixed - new game and resume game aren't behaving properly
 2. fixed game loading twice and triggering unmounted component setState, other similar optimizations
 3. style controls, instructions, and win
 4. add controls and instructions to main game screen
 
 add 'you win', and then version 1.0.0 is ready. :)
+
+Saturday, Sep 29 (1:45)
+1. Implemented arrows
+2. Made level 11
+3. Made arrow redirects not count towards moves
+4. Made win modal display number of moves - troubleshooting inappropriate rerenders now.
+
+Sunday, Sep 30 (1:15)
+1. Win Modal displaying number of moves without side effects.
+2. Figured out why movementController was hanging! :) I set busy to true but never set it back to 
+false for any key but movement. :):):)
 
 gameplay:
 second layer - add:

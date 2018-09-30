@@ -1,5 +1,5 @@
 9 //level
- //top time
+16 //top time
 1-18-10 //floor-height-width
 ::
 1---------------{---

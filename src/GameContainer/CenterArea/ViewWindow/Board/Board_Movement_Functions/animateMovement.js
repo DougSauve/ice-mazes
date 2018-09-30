@@ -1,16 +1,11 @@
 "use strict"
 
-import store from '../../../../../App';
-import {setMovesTaken} from '../../../../../Redux/gameData';
-
-const move = (direction, tilesToMove) => {
+const animateMovement = (direction, tilesToMove) => {
   const Board = document.getElementsByClassName('Board')[0];
 
   //gets the number value of top and left margin on the board
   let startingMarginTop = Board.style.marginTop.substr(0, Board.style.marginTop.length - 2);
   let startingMarginLeft = Board.style.marginLeft.substr(0, Board.style.marginLeft.length - 2);
-
-  store.dispatch(setMovesTaken(store.getState().gameDataReducer.movesTaken + 1));
 
   let timer = 32 * tilesToMove;
 
@@ -71,4 +66,4 @@ const move = (direction, tilesToMove) => {
   });
 };
 
-export default move;
+export default animateMovement;

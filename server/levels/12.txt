@@ -1,0 +1,21 @@
+12 //level
+12 //top time
+1-15-15 //floor-height-width
+::
+1---------{------
+-WW  >        WW-
+-W    >         -
+-  G   >    W   -
+- W    WW   W   -
+- WW <      W  G-
+-    WW      <  -
+-   W        W  -
+-           W   -
+-W         <    -
+-    W    <WW   -
+-       WW     <-
+-              <-
+-  GW          <-
+- >    W   W  > }
+-      W       W-
+-----------------

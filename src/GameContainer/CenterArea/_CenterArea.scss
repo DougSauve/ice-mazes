@@ -57,8 +57,18 @@
 
   .center-area__bottom-panel {
     @extend %panel; 
+    @extend %flex-standard;
 
     box-shadow: 0 -2px 2px #CCAAAA;
+
+    .center-area__target-score {
+      font-size: 1.2rem;
+      
+      span {
+        font-weight: 700;
+        color: lighten($secondary_color, 30%);
+      };
+    };
   };
 };
 

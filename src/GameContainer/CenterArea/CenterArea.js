@@ -32,7 +32,11 @@ const CenterArea = (props) => (
 
     <ViewWindow />
     
-    <div className = "center-area__bottom-panel" />
+    <div className = "center-area__bottom-panel">
+      <div className = "center-area__target-score">
+        Fastest time: <span>{props.topTime}</span>
+      </div>
+    </div>
   </div>
 );
 
@@ -45,6 +49,7 @@ const mapStateToProps = (state) => ({
   
   level: state.gameDataReducer.levelStats.level,
   movesTaken: state.gameDataReducer.movesTaken,
+  topTime: state.gameDataReducer.levelStats.topTime,
 });
 
 export default connect(mapStateToProps)(CenterArea);
