@@ -33,10 +33,11 @@ class MovementController {
     // document.onkeydown = this.getKeyPressed;
     
     this.getKeyPressed = (e) => {
+
       if (this.busy === true) return;
       this.busy = true;
 
-      switch(e) {
+      switch(e.code) {
         case 'ArrowLeft': 
         this.move('left');
         break;

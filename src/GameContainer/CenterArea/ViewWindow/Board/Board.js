@@ -78,10 +78,8 @@ class Board extends React.Component {
           this.win
         )
       );
-
-      document.addEventListener('keydown', (event) => {
-        this.props.movementController.getKeyPressed(event.key);
-      });
+      
+      document.onkeydown = this.props.movementController.getKeyPressed;
     
     }).then(() => {
 
