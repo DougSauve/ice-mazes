@@ -107,7 +107,12 @@ Sunday, Sep 30 (1:15)
 2. Figured out why movementController was hanging! :) I set busy to true but never set it back to 
 false for any key but movement. :):):)
 
-52:30 till now.
+Monday, Oct 1 (1:00)
+1. Fixed a small bug introduced into movement
+2. Made leve 13
+
+53:30 till now.
+
 
 
 gameplay:

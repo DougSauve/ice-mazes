@@ -78,7 +78,7 @@ class Board extends React.Component {
           this.win
         )
       );
-      
+
       document.onkeydown = this.props.movementController.getKeyPressed;
     
     }).then(() => {
@@ -152,6 +152,13 @@ class Board extends React.Component {
                           {(tile.includes('arrow')) &&
                           <img src = './arrow.png' />
                           }
+                          {(tile.includes('button')) &&
+                          <img src = './button.png' />
+                          }
+                          {(tile.includes('stalagmite')) &&
+                          <img src = './stalagmite.png' />
+                          }
+
                           {(tile === 'you-win') &&
                             <div>You Win!</div>
                           }

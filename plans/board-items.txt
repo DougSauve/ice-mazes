@@ -12,9 +12,9 @@ P mist - pit
 
 L ladder
 
-(S) stalagmites - colored **
-* blasting spell - colored (removes stalagmite)
-R rising spell - colored (grows stalagmite)
+(F) stalagmites - colored **
+(f) blasting spell raise/lower stalagmites
+w 
 T time spell - colored, shaped time shown (number of moves before lock closes)
 
 <^>v arrow - redirect

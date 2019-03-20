@@ -9,7 +9,7 @@ const getBoardDataFromFile = async (level) => {
   try {
     return await axios.get('levels/' + level);
   } catch (error) {
-    console.log('asdf error:', error);
+    console.warn('error in getBoardDataFromFile:', error);
   }
 };
 

@@ -76,6 +76,19 @@ const createBoardDataArrayWithClassNames = (boardArray) => {
   boardArray.forEach((row, indexOfRow) => {
     createBoardDataArrayWithClassNames[indexOfRow] = row.map((tile, indexOfTile) => {
       //returns class name based on symbol
+      const catchButton = new RegExp(/^[a-f|h-k]$/);
+      if (catchButton.test(tile)) {
+        console.log(`button-${tile}`);
+        return `button-${tile}`;
+      };
+      const catchStalagmite = new RegExp(/^[A-F|H-K]$/);
+      if (catchStalagmite.test(tile)) {
+        console.log(`stalagmite-${tile.toLowerCase()}`);
+        return `stalagmite-${tile.toLowerCase()}`;
+      }; 
+
+      //when this is tripped, it is a key. Determine whether it is uppercase or lowercase - uppercase are the moving walls, lowercase are the keys. For each one, return its class and add tile to the end. This will make them initial-render properly. Then, during gameplay, landing on the lowercase key triggers a change to the className with the matching uppercase.
+
       switch (tile) {
         case ' ':
           return 'ice';
